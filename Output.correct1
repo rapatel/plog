@@ -1,0 +1,67 @@
+
+TESTING M_s
+
+testing: m_names(Name)
+Name = lect4
+
+Name = lect6
+
+Name = pc4
+
+Name = pc11
+
+Name = pc18
+
+Name = pc22
+
+Name = pc24
+
+Name = pc31
+
+Name = ta7
+
+testing: m_lect(Name)
+Name = lect4
+
+Name = lect6
+
+testing: m_pc(Name)
+Name = pc4
+
+Name = pc11
+
+Name = pc18
+
+Name = pc22
+
+Name = pc24
+
+Name = pc31
+
+testing: m_pc11(Users)
+Users = [kim,tom]
+
+testing: m_pc11(Users)
+Users = [kim,tom]
+
+testing: m_no(Name)
+Name = pc22
+
+Name = pc31
+
+testing: m_eq1(Name)
+Name = pc4
+
+Name = pc24
+
+Name = ta7
+
+testing: m_ge2(Name)
+Name = lect4
+
+Name = lect6
+
+Name = pc11
+
+Name = pc18
+

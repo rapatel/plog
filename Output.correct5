@@ -1,0 +1,386 @@
+
+TESTING M_s
+
+testing: m_names(Name)
+Name = lect4
+
+Name = lect6
+
+Name = pc4
+
+Name = pc11
+
+Name = pc18
+
+Name = pc22
+
+Name = pc24
+
+Name = pc31
+
+Name = ta7
+
+testing: m_lect(Name)
+Name = lect4
+
+Name = lect6
+
+testing: m_pc(Name)
+Name = pc4
+
+Name = pc11
+
+Name = pc18
+
+Name = pc22
+
+Name = pc24
+
+Name = pc31
+
+testing: m_pc11(Users)
+Users = [kim,tom]
+
+testing: m_pc11(Users)
+Users = [kim,tom]
+
+testing: m_no(Name)
+Name = pc22
+
+Name = pc31
+
+testing: m_eq1(Name)
+Name = pc4
+
+Name = pc24
+
+Name = ta7
+
+testing: m_ge2(Name)
+Name = lect4
+
+Name = lect6
+
+Name = pc11
+
+Name = pc18
+
+
+TESTING MYFOR
+
+testing: myfor(2,10,Z)
+Z = [2,3,4,5,6,7,8,9,10]
+
+testing: myfor(3,7,Z)
+Z = [3,4,5,6,7]
+
+testing: myfor(3,2,Z)
+Z = []
+
+
+TESTING FIB
+
+testing: fib(2,2,0,Z)
+Z = []
+
+testing: fib(2,3,10,Z)
+Z = [2,3,5,8]
+
+testing: fib(0,1,10,Z)
+Z = [0,1,1,2,3,5,8]
+
+testing: fib(1,5,3,Z)
+Z = [1]
+
+testing: fib(2,4,2,Z)
+Z = [2]
+
+testing: fib(2,2,2,Z)
+Z = [2]
+
+testing: fib(2,0,2,Z)
+Z = [2]
+
+testing: fib(2,-1,10,Z)
+Z = [2,-1,1,0,1,1,2,3,5,8]
+
+testing: fib(4,5,18,Z)
+Z = [4,5,9,14]
+
+
+TESTING CMEMBER
+
+testing: cmember([[a,[b,c]],[d,[e,f]]],a,Z)
+Z = [a,[b,c]]
+
+testing: cmember([[a,[b,c]],[d,[e,f]]],e,Z)
+testing: cmember([[a,[b,c]],[d,[e,f]]],d,Z)
+Z = [d,[e,f]]
+
+testing: cmember([[30,[9,10]],[40,[11,12]],[50,[33]]],40,Z)
+Z = [40,[11,12]]
+
+testing: cmember([[30,[9,10]],[40,[11,12]],[50,[33]]],30,Z)
+Z = [30,[9,10]]
+
+testing: cmember([[30,[9,10]],[40,[11,12]],[50,[33]]],99,Z)
+
+TESTING SCHED (unsorted) sched
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]]],Z)
+Z = [[sue,[[30,9],[50,10]]]]
+
+Z = [[sue,[[30,10],[50,10]]]]
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]],[joe,[40,30]]],Z)
+Z = [[joe,[[30,9],[40,11]]],[sue,[[30,9],[50,10]]]]
+
+Z = [[joe,[[30,10],[40,11]]],[sue,[[30,9],[50,10]]]]
+
+Z = [[joe,[[30,9],[40,12]]],[sue,[[30,9],[50,10]]]]
+
+Z = [[joe,[[30,10],[40,12]]],[sue,[[30,9],[50,10]]]]
+
+Z = [[joe,[[30,9],[40,11]]],[sue,[[30,10],[50,10]]]]
+
+Z = [[joe,[[30,10],[40,11]]],[sue,[[30,10],[50,10]]]]
+
+Z = [[joe,[[30,9],[40,12]]],[sue,[[30,10],[50,10]]]]
+
+Z = [[joe,[[30,10],[40,12]]],[sue,[[30,10],[50,10]]]]
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]]],Z)
+Z = [[sue,[]]]
+
+testing: sched([[30,[10]],[50,[10]]],[[joe,[30,50]]],Z)
+Z = [[joe,[[30,10],[50,10]]]]
+
+testing: sched([[30,[10]],[40,[11,12]],[50,[10]]],[[sue,[30]],[joe,[30,50]]],Z)
+Z = [[joe,[[30,10],[50,10]]],[sue,[[30,10]]]]
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[joe,[82]]],Z)
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[82]]],Z)
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[50]]],Z)
+Z = [[joe,[[50,10]]],[sue,[]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[oops,[ecs150]]],Z)
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[eng103]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,9]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,10]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,12]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[nut100]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,9]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,12]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a,nut100]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9],[nut100,9]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9],[nut100,12]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[no,[ecs140a,ecs140b,nut100]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[no,[[ecs140a,9],[ecs140b,12],[nut100,9]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[no,[[ecs140a,9],[ecs140b,12],[nut100,12]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[ok1,[nut1,nut100]],[ok2,[nut1,nut100]]],Z)
+Z = [[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,9],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,9],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,12],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,12],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,9],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,9],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,12],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,12],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,9],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,9],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,12],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,12],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,9],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,9],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,12],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,12],[nut100,12]]]]
+
+
+TESTING SCHED (sorted) sched
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]]],Z)
+SL = [[[sue,[[30,9],[50,10]]]],[[sue,[[30,10],[50,10]]]]]
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]],[joe,[40,30]]],Z)
+SL = [[[joe,[[30,9],[40,11]]],[sue,[[30,9],[50,10]]]],[[joe,[[30,9],[40,11]]],[sue,[[30,10],[50,10]]]],[[joe,[[30,9],[40,12]]],[sue,[[30,9],[50,10]]]],[[joe,[[30,9],[40,12]]],[sue,[[30,10],[50,10]]]],[[joe,[[30,10],[40,11]]],[sue,[[30,9],[50,10]]]],[[joe,[[30,10],[40,11]]],[sue,[[30,10],[50,10]]]],[[joe,[[30,10],[40,12]]],[sue,[[30,9],[50,10]]]],[[joe,[[30,10],[40,12]]],[sue,[[30,10],[50,10]]]]]
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]]],Z)
+SL = [[[sue,[]]]]
+
+testing: sched([[30,[10]],[50,[10]]],[[joe,[30,50]]],Z)
+SL = [[[joe,[[30,10],[50,10]]]]]
+
+testing: sched([[30,[10]],[40,[11,12]],[50,[10]]],[[sue,[30]],[joe,[30,50]]],Z)
+SL = [[[joe,[[30,10],[50,10]]],[sue,[[30,10]]]]]
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[joe,[82]]],Z)
+SL = []
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[82]]],Z)
+SL = []
+
+testing: sched([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[50]]],Z)
+SL = [[[joe,[[50,10]]],[sue,[]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[oops,[ecs150]]],Z)
+SL = []
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9]]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[eng103]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,9]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,10]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,12]]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[nut100]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,9]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,12]]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a,nut100]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9],[nut100,9]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9],[nut100,12]]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[no,[ecs140a,ecs140b,nut100]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[no,[[ecs140a,9],[ecs140b,12],[nut100,9]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[no,[[ecs140a,9],[ecs140b,12],[nut100,12]]]]]
+
+testing: sched([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[ok1,[nut1,nut100]],[ok2,[nut1,nut100]]],Z)
+SL = [[[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,9],[nut100,9]]]],[[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,9],[nut100,12]]]],[[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,12],[nut100,9]]]],[[ok1,[[nut1,9],[nut100,9]]],[ok2,[[nut1,12],[nut100,12]]]],[[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,9],[nut100,9]]]],[[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,9],[nut100,12]]]],[[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,12],[nut100,9]]]],[[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,12],[nut100,12]]]],[[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,9],[nut100,9]]]],[[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,9],[nut100,12]]]],[[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,12],[nut100,9]]]],[[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,12],[nut100,12]]]],[[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,9],[nut100,9]]]],[[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,9],[nut100,12]]]],[[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,12],[nut100,9]]]],[[ok1,[[nut1,12],[nut100,12]]],[ok2,[[nut1,12],[nut100,12]]]]]
+
+
+TESTING SCHED (unsorted) schedwo
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]]],Z)
+Z = [[sue,[[30,9],[50,10]]]]
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]],[joe,[40,30]]],Z)
+Z = [[joe,[[30,9],[40,11]]],[sue,[[30,9],[50,10]]]]
+
+Z = [[joe,[[30,10],[40,11]]],[sue,[[30,9],[50,10]]]]
+
+Z = [[joe,[[30,9],[40,12]]],[sue,[[30,9],[50,10]]]]
+
+Z = [[joe,[[30,10],[40,12]]],[sue,[[30,9],[50,10]]]]
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]]],Z)
+Z = [[sue,[]]]
+
+testing: schedwo([[30,[10]],[50,[10]]],[[joe,[30,50]]],Z)
+testing: schedwo([[30,[10]],[40,[11,12]],[50,[10]]],[[sue,[30]],[joe,[30,50]]],Z)
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[joe,[82]]],Z)
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[82]]],Z)
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[50]]],Z)
+Z = [[joe,[[50,10]]],[sue,[]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[oops,[ecs150]]],Z)
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[eng103]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,9]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,10]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,12]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[nut100]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,9]]]]
+
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,12]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a,nut100]]],Z)
+Z = [[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9],[nut100,12]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[no,[ecs140a,ecs140b,nut100]]],Z)
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[ok1,[nut1,nut100]],[ok2,[nut1,nut100]]],Z)
+Z = [[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,9],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,12],[nut100,9]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,9],[nut100,12]]]]
+
+Z = [[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,12],[nut100,9]]]]
+
+
+TESTING SCHED (sorted) schedwo
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]]],Z)
+SL = [[[sue,[[30,9],[50,10]]]]]
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[30,50]],[joe,[40,30]]],Z)
+SL = [[[joe,[[30,9],[40,11]]],[sue,[[30,9],[50,10]]]],[[joe,[[30,9],[40,12]]],[sue,[[30,9],[50,10]]]],[[joe,[[30,10],[40,11]]],[sue,[[30,9],[50,10]]]],[[joe,[[30,10],[40,12]]],[sue,[[30,9],[50,10]]]]]
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]]],Z)
+SL = [[[sue,[]]]]
+
+testing: schedwo([[30,[10]],[50,[10]]],[[joe,[30,50]]],Z)
+SL = []
+
+testing: schedwo([[30,[10]],[40,[11,12]],[50,[10]]],[[sue,[30]],[joe,[30,50]]],Z)
+SL = []
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[joe,[82]]],Z)
+SL = []
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[82]]],Z)
+SL = []
+
+testing: schedwo([[30,[9,10]],[40,[11,12]],[50,[10]]],[[sue,[]],[joe,[50]]],Z)
+SL = [[[joe,[[50,10]]],[sue,[]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[oops,[ecs150]]],Z)
+SL = []
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9]]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[eng103]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,9]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,10]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[eng103,12]]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[nut100]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,9]]]],[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[nut100,12]]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[ok,[ecs140a,nut100]]],Z)
+SL = [[[me,[[ecs140a,9],[ecs140b,12]]],[ok,[[ecs140a,9],[nut100,12]]]]]
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[me,[ecs140a,ecs140b]],[no,[ecs140a,ecs140b,nut100]]],Z)
+SL = []
+
+testing: schedwo([[ecs140a,[9]],[ecs140b,[12]],[eng103,[9,10,12]],[nut100,[9,12]],[nut1,[9,12]]],[[ok1,[nut1,nut100]],[ok2,[nut1,nut100]]],Z)
+SL = [[[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,9],[nut100,12]]]],[[ok1,[[nut1,9],[nut100,12]]],[ok2,[[nut1,12],[nut100,9]]]],[[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,9],[nut100,12]]]],[[ok1,[[nut1,12],[nut100,9]]],[ok2,[[nut1,12],[nut100,9]]]]]
+

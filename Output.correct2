@@ -1,0 +1,109 @@
+
+TESTING M_s
+
+testing: m_names(Name)
+Name = lect4
+
+Name = lect6
+
+Name = pc4
+
+Name = pc11
+
+Name = pc18
+
+Name = pc22
+
+Name = pc24
+
+Name = pc31
+
+Name = ta7
+
+testing: m_lect(Name)
+Name = lect4
+
+Name = lect6
+
+testing: m_pc(Name)
+Name = pc4
+
+Name = pc11
+
+Name = pc18
+
+Name = pc22
+
+Name = pc24
+
+Name = pc31
+
+testing: m_pc11(Users)
+Users = [kim,tom]
+
+testing: m_pc11(Users)
+Users = [kim,tom]
+
+testing: m_no(Name)
+Name = pc22
+
+Name = pc31
+
+testing: m_eq1(Name)
+Name = pc4
+
+Name = pc24
+
+Name = ta7
+
+testing: m_ge2(Name)
+Name = lect4
+
+Name = lect6
+
+Name = pc11
+
+Name = pc18
+
+
+TESTING MYFOR
+
+testing: myfor(2,10,Z)
+Z = [2,3,4,5,6,7,8,9,10]
+
+testing: myfor(3,7,Z)
+Z = [3,4,5,6,7]
+
+testing: myfor(3,2,Z)
+Z = []
+
+
+TESTING FIB
+
+testing: fib(2,2,0,Z)
+Z = []
+
+testing: fib(2,3,10,Z)
+Z = [2,3,5,8]
+
+testing: fib(0,1,10,Z)
+Z = [0,1,1,2,3,5,8]
+
+testing: fib(1,5,3,Z)
+Z = [1]
+
+testing: fib(2,4,2,Z)
+Z = [2]
+
+testing: fib(2,2,2,Z)
+Z = [2]
+
+testing: fib(2,0,2,Z)
+Z = [2]
+
+testing: fib(2,-1,10,Z)
+Z = [2,-1,1,0,1,1,2,3,5,8]
+
+testing: fib(4,5,18,Z)
+Z = [4,5,9,14]
+
