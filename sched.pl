@@ -74,6 +74,66 @@ fib(First1,First2,Last,Result) :-
     ).
 
 
+/*===================================*/
+
+/* PART 3 */
+
+cmember(C,X,Y) :-
+    member([X|T],C),
+    Y = [X|T].
+
+/*===================================*/
+
+/* PART 4 */
+
+% Sorts each students classes
+sclass([],[]).
+sclass(C,L) :-
+    [F|T] = C,
+    [S|T2] = F,
+    [Cl|_] = T2,
+    sort(Cl,Sorted),
+    sclass(T,L2),
+    L3 = [S,Sorted],
+    L = [L3|L2].
+
+% Created a schedule for the student
+fsched([],_,[]).
+fsched(Courses,CList,R) :-
+    [C1|T] = Courses,
+    fsched(T,CList,R2),
+    cmember(CList,C1,Time),
+    [_|T2] = Time,
+    [Cltime|_] = T2,    
+    member(Atime,Cltime),
+    X = [C1,Atime],
+    R = [X|R2].
+
+sched(_,[],[]).
+sched(C,S,Z) :-
+    sort(C,C2),
+    sort(S,S2),
+    sclass(S2,Ssorted),
+    [St1|Rest] = Ssorted,
+    sched(C2,Rest,Sch2),
+    [Stname|T] = St1,
+    [Stcourses|_] = T,
+    fsched(Stcourses,C2,Sch1),
+    Stsched = [Stname,Sch1],
+    Z = [Stsched|Sch2].
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
