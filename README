@@ -2,9 +2,9 @@
 *** repeat it for each group member;
 *** list group members alphabetically by last name
 
-Name(last): xxxx
-Name(first): xxxx
-Login_ID: xxxxx
+Name(last): Patel
+Name(first): Ritesh
+Login_ID: ritesh88
 
 *** Give the status of your work; here's a sample.
 
@@ -14,7 +14,6 @@ part1: Works on all tests.
 part2: Works on all tests.
 part3: Works on all tests.
 part4: Works on all tests.
-part5: Works on only the first test case.
-part6: Didn't attempt.
+part5: Works on all tests.
 
-Overall: Any comment/discussion related to this HW.
+Overall: All tests worked. There were differences in the files because the ordering of my prolog program output was different in the unsorted cases. I made use of part 3's cmember function in part 4 and part 5.
