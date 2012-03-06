@@ -123,18 +123,49 @@ sched(C,S,Z) :-
     Z = [Stsched|Sch2].
 
 
+/*===================================*/
 
+/* PART 5 */
 
+gettimes([],[]).
+gettimes(L,R) :-
+    [L1|Rest] = L,
+    gettimes(Rest,R2),
+    [_|T1] = L1,
+    [Time1|_] = T1,
+    R = [Time1|R2].
 
+% Check for time overlap
+coverlap(L1,L2,R) :-
+    [_|T1] = L1,
+    [Time1|_] = T1,
+    gettimes(L2,L3),
+    member(Time1,L3), !, fail
+    ;
+    R = [L1|L2].
 
+% Created a schedule for the student
+fschedwo([],_,[]).
+fschedwo(Courses,CList,R) :-
+    [C1|T] = Courses,
+    fschedwo(T,CList,R2),
+    cmember(CList,C1,Time),
+    [_|T2] = Time,
+    [Cltime|_] = T2,
+    member(Atime,Cltime),
+    X = [C1,Atime],
+    coverlap(X,R2,R).
 
-
-
-
-
-
-
-
-
-
+schedwo(_,[],[]).
+schedwo(C,S,Z) :-
+    sort(C,C2),
+    sort(S,S2),
+    sclass(S2,Ssorted),
+    [St1|Rest] = Ssorted,
+    schedwo(C2,Rest,Sch2),
+    [Stname|T] = St1,
+    [Stcourses|_] = T,
+    fschedwo(Stcourses,C2,Sch1),
+    Stsched = [Stname,Sch1],
+    Z = [Stsched|Sch2].
 
